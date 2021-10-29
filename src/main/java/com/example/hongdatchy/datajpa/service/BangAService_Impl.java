@@ -5,13 +5,11 @@ import com.example.hongdatchy.datajpa.entities.jsonToClient.BangAJson;
 import com.example.hongdatchy.datajpa.repo.BangACustomRepo;
 import com.example.hongdatchy.datajpa.repo.BangARepo;
 import com.example.hongdatchy.datajpa.repo.BaseRepo;
-import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,11 +22,11 @@ public class BangAService_Impl implements BangAService {
     BangACustomRepo bangACustomRepo;
 
     @Autowired
-    BaseService<BangA> bangABaseService;
+    BaseRepo<BangA> bangABaseRepo;
 
     @PostConstruct
     public void myPostConstruct(){
-        bangABaseService.setClazz(BangA.class);
+        bangABaseRepo.setClazz(BangA.class);
     }
 
     @Override
@@ -43,7 +41,7 @@ public class BangAService_Impl implements BangAService {
 
     @Override
     public List<BangAJson> findAllJson() {
-        return bangABaseService.findAll().stream().map(bangA -> {
+        return bangABaseRepo.findAll().stream().map(bangA -> {
             return  BangAJson.builder()
                     .id(bangA.getId())
                     .name(bangA.getName())
