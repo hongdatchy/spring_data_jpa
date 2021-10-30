@@ -1,6 +1,5 @@
 package com.example.hongdatchy.datajpa.repo;
 
-//import io.swagger.annotations.Scope;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;

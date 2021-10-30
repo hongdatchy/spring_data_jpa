@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 public class BangAJson {
 
-
     private Integer id;
 
     private String name;

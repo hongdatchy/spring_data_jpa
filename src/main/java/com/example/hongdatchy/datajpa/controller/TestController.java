@@ -3,34 +3,27 @@ package com.example.hongdatchy.datajpa.controller;
 import com.example.hongdatchy.datajpa.entities.data.*;
 import com.example.hongdatchy.datajpa.service.BangAService;
 import com.example.hongdatchy.datajpa.service.BaseService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 
-
+@AllArgsConstructor
 @RestController
 public class TestController {
 
-    @Autowired
-    BangAService bangAService;
+     BangAService bangAService;
 
-    @Autowired
-    BaseService<BangA> bangABaseService;
+     BaseService<BangA> bangABaseService;
 
-    @Autowired
-    BaseService<ConA> conABaseService;
+     BaseService<ConA> conABaseService;
 
-    @Autowired
-    BaseService<BangB> bangBBaseService;
+     BaseService<BangB> bangBBaseService;
 
-    @Autowired
-    BaseService<Bangtrunggian> bangtrunggianBaseService;
+     BaseService<Bangtrunggian> bangtrunggianBaseService;
 
-    @Autowired
-    BaseService<ChauA> chauABaseService;
-
+     BaseService<ChauA> chauABaseService;
 
     @PostConstruct
     public void setClassForRepo() {
@@ -80,7 +73,6 @@ public class TestController {
         chauABaseService.setClazz(ChauA.class);
         return ResponseEntity.ok(chauABaseService.findAll());
     }
-
 
     @PostMapping("api/bangA/findByNameContains")
     public ResponseEntity<Object> findByNameContains(@RequestBody String str) {
