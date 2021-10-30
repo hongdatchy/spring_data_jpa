@@ -44,8 +44,12 @@ public class TestController {
 
     @GetMapping("api/bangA")
     public ResponseEntity<Object> findAllA() {
-//        return ResponseEntity.ok(bangABaseService.findAll());
         return ResponseEntity.ok(bangAService.findAllUsingEntityManager());
+    }
+
+    @GetMapping("api/bangA/{id}")
+    public ResponseEntity<Object> findAllA(@PathVariable int id) {
+        return ResponseEntity.ok(bangABaseService.findById(id));
     }
 
     @GetMapping("api/bangAJson")

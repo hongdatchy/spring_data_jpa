@@ -3,6 +3,7 @@ package com.example.hongdatchy.datajpa.entities.data;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,6 +24,7 @@ public class ConA {
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "bangA_id")
+    @ToString.Exclude
     private BangA bangA;
 
 

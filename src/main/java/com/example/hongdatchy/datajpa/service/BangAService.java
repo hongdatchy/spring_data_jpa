@@ -8,6 +8,7 @@ import java.util.List;
 public interface BangAService {
 
     BangA findNameContains(String str);
+
     List <BangA> findAllUsingEntityManager();
 
     List<BangAJson> findAllJson();
