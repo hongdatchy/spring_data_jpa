@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 @Configuration
-public class BeanBaseRepo {
+public class BaseRepoBeans {
 
     @Bean
     public BaseRepo_Impl<BangA> bangABaseRepo_() {
