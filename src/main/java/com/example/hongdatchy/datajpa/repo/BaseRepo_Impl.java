@@ -1,7 +1,5 @@
 package com.example.hongdatchy.datajpa.repo;
 
-import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,12 +7,11 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Scope( BeanDefinition.SCOPE_PROTOTYPE )
 public class BaseRepo_Impl<T> implements BaseRepo<T>{
 
     private Class<T> clazz;
 
-    @PersistenceContext(unitName = "entityManagerFactory")
+    @PersistenceContext
     private EntityManager entityManager;
 
     @Override

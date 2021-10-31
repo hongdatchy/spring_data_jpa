@@ -1,39 +1,27 @@
 package com.example.hongdatchy.datajpa.controller;
 
 import com.example.hongdatchy.datajpa.entities.data.*;
+import com.example.hongdatchy.datajpa.repo.BaseRepo;
 import com.example.hongdatchy.datajpa.service.BangAService;
-import com.example.hongdatchy.datajpa.service.BaseService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
 
 @AllArgsConstructor
 @RestController
 public class TestController {
 
-     BangAService bangAService;
+    BangAService bangAService;
 
-     BaseService<BangA> bangABaseService;
+    BaseRepo<BangA> bangABaseRepo;
 
-     BaseService<ConA> conABaseService;
+    BaseRepo<ConA> conABaseRepo;
 
-     BaseService<BangB> bangBBaseService;
+    BaseRepo<BangB> bangBBaseRepo;
 
-     BaseService<Bangtrunggian> bangtrunggianBaseService;
+    BaseRepo<Bangtrunggian> bangtrunggianBaseRepo;
 
-     BaseService<ChauA> chauABaseService;
-
-    @PostConstruct
-    public void setClassForRepo() {
-        /*
-        postcontruct chỉ làm được 1 cái, nếu nhiều sẽ gây ra lỗi --> phải set ở các controller như phía dưới
-        nếu mà làm thực tế thì ta sẽ khó có thể gặp trường hợp để các baseservice trong 1 controller như thế
-        này nên ta không cần quá lo lắng
-        */
-        bangABaseService.setClazz(BangA.class);
-    }
+    BaseRepo<ChauA> chauABaseRepo;
 
     @GetMapping("api/bangA")
     public ResponseEntity<Object> findAllA() {
@@ -42,7 +30,7 @@ public class TestController {
 
     @GetMapping("api/bangA/{id}")
     public ResponseEntity<Object> findAllA(@PathVariable int id) {
-        return ResponseEntity.ok(bangABaseService.findById(id));
+        return ResponseEntity.ok(bangABaseRepo.findById(id));
     }
 
     @GetMapping("api/bangAJson")
@@ -52,26 +40,22 @@ public class TestController {
 
     @GetMapping("api/bangB")
     public ResponseEntity<Object> findAllB() {
-        bangBBaseService.setClazz(BangB.class);
-        return ResponseEntity.ok(bangBBaseService.findAll());
+        return ResponseEntity.ok(bangBBaseRepo.findAll());
     }
 
     @GetMapping("api/bangtrunggian")
     public ResponseEntity<Object> findAllBangTrungGian() {
-        bangtrunggianBaseService.setClazz(Bangtrunggian.class);
-        return ResponseEntity.ok(bangtrunggianBaseService.findAll());
+        return ResponseEntity.ok(bangtrunggianBaseRepo.findAll());
     }
 
     @GetMapping("api/conA")
     public ResponseEntity<Object> findAllConA() {
-        conABaseService.setClazz(ConA.class);
-        return ResponseEntity.ok(conABaseService.findAll());
+        return ResponseEntity.ok(conABaseRepo.findAll());
     }
 
     @GetMapping("api/chauA")
     public ResponseEntity<Object> findAllChauA() {
-        chauABaseService.setClazz(ChauA.class);
-        return ResponseEntity.ok(chauABaseService.findAll());
+        return ResponseEntity.ok(chauABaseRepo.findAll());
     }
 
     @PostMapping("api/bangA/findByNameContains")
@@ -81,7 +65,7 @@ public class TestController {
 
     @DeleteMapping("api/bangA/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
-        return ResponseEntity.ok(bangABaseService.delete(id));
+        return ResponseEntity.ok(bangABaseRepo.delete(id));
     }
 
 }
