@@ -58,8 +58,8 @@ public class TestController {
         return ResponseEntity.ok(chauABaseRepo.findAll());
     }
 
-    @PostMapping("api/bangA/findByNameContains")
-    public ResponseEntity<Object> findByNameContains(@RequestBody String str) {
+    @GetMapping("api/bangA/findByNameContains")
+    public ResponseEntity<Object> findByNameContains(@RequestParam String str) {
         return ResponseEntity.ok(bangAService.findNameContains(str));
     }
 
