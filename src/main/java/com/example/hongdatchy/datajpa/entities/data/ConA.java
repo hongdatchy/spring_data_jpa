@@ -29,6 +29,6 @@ public class ConA {
 
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "conA", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "conA", cascade = CascadeType.ALL)
     private List<ChauA> chauAList;
 }

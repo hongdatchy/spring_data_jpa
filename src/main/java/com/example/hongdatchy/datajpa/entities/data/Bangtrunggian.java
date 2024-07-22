@@ -16,8 +16,6 @@ public class Bangtrunggian {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-//    @Column(name = "bangA_id", nullable = false)
-//    private Integer bangaId;
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "bangA_id")

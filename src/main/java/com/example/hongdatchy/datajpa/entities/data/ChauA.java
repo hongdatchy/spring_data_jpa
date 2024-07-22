@@ -16,7 +16,6 @@ public class ChauA {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "conA_id")

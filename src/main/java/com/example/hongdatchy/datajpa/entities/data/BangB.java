@@ -20,7 +20,7 @@ public class BangB {
     private String name;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "bangB", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "bangB", cascade = CascadeType.ALL)
     private List<Bangtrunggian> bangtrunggianList;
 
 }

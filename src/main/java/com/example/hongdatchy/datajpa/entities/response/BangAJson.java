@@ -1,4 +1,4 @@
-package com.example.hongdatchy.datajpa.entities.jsonToClient;
+package com.example.hongdatchy.datajpa.entities.response;
 
 import com.example.hongdatchy.datajpa.entities.data.Bangtrunggian;
 import com.example.hongdatchy.datajpa.entities.data.ConA;

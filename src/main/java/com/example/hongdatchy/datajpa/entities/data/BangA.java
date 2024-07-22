@@ -21,11 +21,11 @@ public class BangA {
 
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "bangA", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "bangA", cascade = CascadeType.ALL)
     private List<ConA> conAList;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "bangA", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "bangA", cascade = CascadeType.ALL)
     private List<Bangtrunggian> bangtrunggianList;
 
 }

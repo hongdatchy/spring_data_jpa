@@ -1,7 +1,7 @@
 package com.example.hongdatchy.datajpa.controller;
 
 import com.example.hongdatchy.datajpa.entities.data.*;
-import com.example.hongdatchy.datajpa.repo.BaseRepo;
+import com.example.hongdatchy.datajpa.repo.*;
 import com.example.hongdatchy.datajpa.service.BangAService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +13,15 @@ public class TestController {
 
     BangAService bangAService;
 
-    BaseRepo<BangA> bangABaseRepo;
+    BangARepository bangARepository;
 
-    BaseRepo<ConA> conABaseRepo;
+    ConARepository conARepository;
 
-    BaseRepo<BangB> bangBBaseRepo;
+    BangBRepository bangBRepository;
 
-    BaseRepo<Bangtrunggian> bangtrunggianBaseRepo;
+    BangtrunggianRepository bangtrunggianRepository;
 
-    BaseRepo<ChauA> chauABaseRepo;
+    ChauARepository chauARepository;
 
     @GetMapping("api/bangA")
     public ResponseEntity<Object> findAllA() {
@@ -30,32 +30,32 @@ public class TestController {
 
     @GetMapping("api/bangA/{id}")
     public ResponseEntity<Object> findAllA(@PathVariable int id) {
-        return ResponseEntity.ok(bangABaseRepo.findById(id));
+        return ResponseEntity.ok(bangARepository.findById(id));
     }
 
-    @GetMapping("api/bangAJson")
-    public ResponseEntity<Object> findAllAJson() {
-        return ResponseEntity.ok(bangAService.findAllJson());
-    }
+//    @GetMapping("api/bangAJson")
+//    public ResponseEntity<Object> findAllAJson() {
+//        return ResponseEntity.ok(bangAService.findAllJson());
+//    }
 
     @GetMapping("api/bangB")
     public ResponseEntity<Object> findAllB() {
-        return ResponseEntity.ok(bangBBaseRepo.findAll());
+        return ResponseEntity.ok(bangBRepository.findAll());
     }
 
     @GetMapping("api/bangtrunggian")
     public ResponseEntity<Object> findAllBangTrungGian() {
-        return ResponseEntity.ok(bangtrunggianBaseRepo.findAll());
+        return ResponseEntity.ok(bangtrunggianRepository.findAll());
     }
 
     @GetMapping("api/conA")
     public ResponseEntity<Object> findAllConA() {
-        return ResponseEntity.ok(conABaseRepo.findAll());
+        return ResponseEntity.ok(conARepository.findAll());
     }
 
     @GetMapping("api/chauA")
     public ResponseEntity<Object> findAllChauA() {
-        return ResponseEntity.ok(chauABaseRepo.findAll());
+        return ResponseEntity.ok(chauARepository.findAll());
     }
 
     @GetMapping("api/bangA/findByNameContains")
@@ -65,7 +65,58 @@ public class TestController {
 
     @DeleteMapping("api/bangA/{id}")
     public ResponseEntity<Object> delete(@PathVariable int id) {
-        return ResponseEntity.ok(bangABaseRepo.delete(id));
+        bangARepository.deleteById(id);
+        return ResponseEntity.ok("");
+    }
+
+    @PostMapping("api/bangA")
+    public ResponseEntity<Object> create(@RequestBody BangA bangA) {
+        return ResponseEntity.ok(bangARepository.save(bangA));
+    }
+
+    @PutMapping("api/bangA")
+    public ResponseEntity<Object> update(@RequestBody BangA bangA) {
+        return ResponseEntity.ok(bangARepository.save(bangA));
+    }
+
+    @PostMapping("api/bangB")
+    public ResponseEntity<Object> createB(@RequestBody BangB bangB) {
+        return ResponseEntity.ok(bangBRepository.save(bangB));
+    }
+
+    @PutMapping("api/bangB")
+    public ResponseEntity<Object> updateB(@RequestBody BangB bangB) {
+        return ResponseEntity.ok(bangBRepository.save(bangB));
+    }
+
+    @PostMapping("api/bangtrunggian")
+    public ResponseEntity<Object> createBangTrungGian(@RequestBody Bangtrunggian bangtrunggian) {
+        return ResponseEntity.ok(bangtrunggianRepository.save(bangtrunggian));
+    }
+
+    @PutMapping("api/bangtrunggian")
+    public ResponseEntity<Object> updateBangTrungGian(@RequestBody Bangtrunggian bangtrunggian) {
+        return ResponseEntity.ok(bangtrunggianRepository.save(bangtrunggian));
+    }
+
+    @PostMapping("api/chauA")
+    public ResponseEntity<Object> createChauA(@RequestBody ChauA chauA) {
+        return ResponseEntity.ok(chauARepository.save(chauA));
+    }
+
+    @PutMapping("api/chauA")
+    public ResponseEntity<Object> updateChauA(@RequestBody ChauA chauA) {
+        return ResponseEntity.ok(chauARepository.save(chauA));
+    }
+
+    @PostMapping("api/conA")
+    public ResponseEntity<Object> createConA(@RequestBody ConA conA) {
+        return ResponseEntity.ok(conARepository.save(conA));
+    }
+
+    @PutMapping("api/conA")
+    public ResponseEntity<Object> updateConA(@RequestBody ConA conA) {
+        return ResponseEntity.ok(conARepository.save(conA));
     }
 
 }
