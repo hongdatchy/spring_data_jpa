@@ -5,15 +5,20 @@ import com.example.hongdatchy.datajpa.repo.BangACustomRepo;
 import com.example.hongdatchy.datajpa.repo.BangARepository;
 import com.example.hongdatchy.datajpa.repo.BangBRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 @AllArgsConstructor
-public class BangAService_Impl implements BangAService {
+public class CashService {
 
     BangARepository bangARepository;
 
@@ -21,33 +26,19 @@ public class BangAService_Impl implements BangAService {
 
     BangACustomRepo bangACustomRepo;
 
+    @Transactional(isolation = Isolation.SERIALIZABLE) // hoặc DEFAULT
+    public Integer cash(int id, int amount) {
+        BangA bangA = bangARepository.findById(id).orElse(null);
 
-    @Override
-    public BangA findNameContains(String str) {
-        return bangARepository.findBangAByNameContains(str);
-    }
-
-    @Override
-    public List<BangA> findAllUsingEntityManager() {
-        return bangACustomRepo.findAllUsingEntityManager();
-    }
-
-    @Transactional
-    public int cash(int id, int amount) {
-        BangA bangA = bangARepository.findByIdForUpdate(id).orElse(null);
-        if (amount > 0 && amount > bangA.getAmount()) {
-            throw new RuntimeException("Không đủ tiền");
+        if (amount > bangA.getAmount()) {
+            throw new RuntimeException("Không đủ tiền");
         }
+
         bangA.setAmount(bangA.getAmount() - amount);
         bangARepository.save(bangA);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+
         return amount;
     }
-
 
 
 }

@@ -19,6 +19,8 @@ public class BangA {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "amount", nullable = false)
+    private Integer amount;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "bangA", cascade = CascadeType.ALL)

@@ -30,6 +30,6 @@ public class DatajpaApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-//        bangARepository.
+        bangARepository.
     }
 }

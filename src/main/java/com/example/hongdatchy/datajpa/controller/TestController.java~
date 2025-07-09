@@ -124,7 +124,7 @@ public class TestController {
      * 1..10 | ForEach-Object {
      *     $i = $_
      *     Start-Job {
-     *         $response = Invoke-RestMethod -Uri "http://localhost:8081/api/bangA/cash/1/1000"
+     *         $response = Invoke-RestMethod -Uri "http://localhost:8081/api/bangA/cash/1/10"
      *         Write-Output "Thread $using:i: $response"
      *     }
      * }

@@ -1,7 +1,7 @@
-package com.example.hongdatchy.datajpa.entities.response;
+package com.example.hongdatchy.datajpa.model.response;
 
-import com.example.hongdatchy.datajpa.entities.data.Bangtrunggian;
-import com.example.hongdatchy.datajpa.entities.data.ConA;
+import com.example.hongdatchy.datajpa.model.entities.Bangtrunggian;
+import com.example.hongdatchy.datajpa.model.entities.ConA;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

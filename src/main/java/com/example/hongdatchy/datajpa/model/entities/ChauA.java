@@ -1,4 +1,4 @@
-package com.example.hongdatchy.datajpa.entities.data;
+package com.example.hongdatchy.datajpa.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;

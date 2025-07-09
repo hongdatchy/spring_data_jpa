@@ -1,4 +1,4 @@
-package com.example.hongdatchy.datajpa.entities.data;
+package com.example.hongdatchy.datajpa.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
@@ -7,9 +7,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "bangb")
+@Table(name = "banga")
 @Data
-public class BangB {
+public class BangA {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +19,15 @@ public class BangB {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "amount", nullable = false)
+    private Integer amount;
+
     @JsonManagedReference
-    @OneToMany(mappedBy = "bangB", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bangA", cascade = CascadeType.ALL)
+    private List<ConA> conAList;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "bangA", cascade = CascadeType.ALL)
     private List<Bangtrunggian> bangtrunggianList;
 
 }

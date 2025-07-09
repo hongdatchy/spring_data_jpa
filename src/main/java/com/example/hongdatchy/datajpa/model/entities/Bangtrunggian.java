@@ -1,25 +1,20 @@
-package com.example.hongdatchy.datajpa.entities.data;
+package com.example.hongdatchy.datajpa.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
-@Table(name = "cona")
-public class ConA {
+@Table(name = "bangtrunggian")
+public class Bangtrunggian {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-
-    @Column(name = "name", nullable = false)
-    private String name;
 
     @JsonBackReference
     @ManyToOne
@@ -27,8 +22,15 @@ public class ConA {
     @ToString.Exclude
     private BangA bangA;
 
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "bangB_id")
+    @ToString.Exclude
+    private BangB bangB;
+//    @Column(name = "bangB_id", nullable = false)
+//    private Integer bangbId;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "conA", cascade = CascadeType.ALL)
-    private List<ChauA> chauAList;
+    @Column(name = "name", nullable = false)
+    private String name;
+
 }

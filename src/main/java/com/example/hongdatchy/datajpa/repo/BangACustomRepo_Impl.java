@@ -1,6 +1,6 @@
 package com.example.hongdatchy.datajpa.repo;
 
-import com.example.hongdatchy.datajpa.entities.data.BangA;
+import com.example.hongdatchy.datajpa.model.entities.BangA;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

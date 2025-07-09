@@ -31,7 +31,7 @@ public class BangAService_Impl implements BangAService {
     public List<BangA> findAllUsingEntityManager() {
         return bangACustomRepo.findAllUsingEntityManager();
     }
-
+    
     @Transactional
     public int cash(int id, int amount) {
         BangA bangA = bangARepository.findByIdForUpdate(id).orElse(null);
